@@ -21,7 +21,7 @@ module Mastodon
     end
 
     def flags
-      'ef67_myhome_cx'
+      ''
     end
 
     def to_a
@@ -29,7 +29,7 @@ module Mastodon
     end
 
     def to_s
-      [to_a.join('.'), flags].join
+      [to_a.join('.'), flags].join + '_ef67_myhome_cx'
     end
 
     def repository

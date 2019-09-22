@@ -13,23 +13,23 @@ module Mastodon
     end
 
     def patch
-      3
+      2
+    end
+
+    def pre
+      nil
     end
 
     def flags
       ''
     end
 
-    def suffix
-      'ef67_myhome_cx'
-    end
-
     def to_a
-      [major, minor, patch].compact
+      [major, minor, patch, pre].compact
     end
 
     def to_s
-      [to_a.join('.'), flags, suffix].join
+      [to_a.join('.'), flags].join + '_ef67_myhome_cx'
     end
 
     def repository

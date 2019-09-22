@@ -11,7 +11,6 @@ import {
   ACCOUNT_BLOCK_SUCCESS,
   ACCOUNT_MUTE_SUCCESS,
 } from '../actions/accounts';
-import { DOMAIN_BLOCK_SUCCESS } from 'mastodon/actions/domain_blocks';
 import { TIMELINE_DELETE, TIMELINE_DISCONNECT } from '../actions/timelines';
 import { Map as ImmutableMap, List as ImmutableList } from 'immutable';
 import compareId from '../compare_id';
@@ -78,8 +77,8 @@ const expandNormalizedNotifications = (state, notifications, next) => {
   });
 };
 
-const filterNotifications = (state, accountIds) => {
-  return state.update('items', list => list.filterNot(item => item !== null && accountIds.includes(item.get('account'))));
+const filterNotifications = (state, relationship) => {
+  return state.update('items', list => list.filterNot(item => item !== null && item.get('account') === relationship.id));
 };
 
 const updateTop = (state, top) => {
@@ -109,11 +108,9 @@ export default function notifications(state = initialState, action) {
   case NOTIFICATIONS_EXPAND_SUCCESS:
     return expandNormalizedNotifications(state, action.notifications, action.next);
   case ACCOUNT_BLOCK_SUCCESS:
-    return filterNotifications(state, [action.relationship.id]);
+    return filterNotifications(state, action.relationship);
   case ACCOUNT_MUTE_SUCCESS:
-    return action.relationship.muting_notifications ? filterNotifications(state, [action.relationship.id]) : state;
-  case DOMAIN_BLOCK_SUCCESS:
-    return filterNotifications(state, action.accounts);
+    return action.relationship.muting_notifications ? filterNotifications(state, action.relationship) : state;
   case NOTIFICATIONS_CLEAR:
     return state.set('items', ImmutableList()).set('hasMore', false);
   case TIMELINE_DELETE:

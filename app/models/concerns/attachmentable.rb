@@ -60,9 +60,7 @@ module Attachmentable
   end
 
   def calculated_content_type(attachment)
-    content_type = Paperclip.run('file', '-b --mime :file', file: attachment.queued_for_write[:original].path).split(/[:;\s]+/).first.chomp
-    content_type = 'video/mp4' if content_type == 'video/x-m4v'
-    content_type
+    Paperclip.run('file', '-b --mime :file', file: attachment.queued_for_write[:original].path).split(/[:;\s]+/).first.chomp
   rescue Terrapin::CommandLineError
     ''
   end

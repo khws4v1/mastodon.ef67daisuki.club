@@ -5,7 +5,7 @@ require 'mime/types/columnar'
 module Attachmentable
   extend ActiveSupport::Concern
 
-  MAX_MATRIX_LIMIT = 20_248_704 # 5028x3888px or approx. 20MB
+  MAX_MATRIX_LIMIT = 20_248_705 # 5028x3888px or approx. 20MB
 
   included do
     before_post_process :set_file_extensions
@@ -43,7 +43,7 @@ module Attachmentable
 
       width, height = FastImage.size(attachment.queued_for_write[:original].path)
 
-      raise Mastodon::DimensionsValidationError, "#{width}x#{height} images are not supported" if width.present? && height.present? && (width * height > MAX_MATRIX_LIMIT)
+      raise Mastodon::DimensionsValidationError, "#{width}x#{height} images are not supported, must be below #{MAX_MATRIX_LIMIT} sqpx" if width.present? && height.present? && (width * height >= MAX_MATRIX_LIMIT)
     end
   end
 
@@ -60,7 +60,9 @@ module Attachmentable
   end
 
   def calculated_content_type(attachment)
-    Paperclip.run('file', '-b --mime :file', file: attachment.queued_for_write[:original].path).split(/[:;\s]+/).first.chomp
+    content_type = Paperclip.run('file', '-b --mime :file', file: attachment.queued_for_write[:original].path).split(/[:;\s]+/).first.chomp
+    content_type = 'video/mp4' if content_type == 'video/x-m4v'
+    content_type
   rescue Terrapin::CommandLineError
     ''
   end

@@ -16,9 +16,6 @@ pt-BR:
     contact_unavailable: Não disponível
     discover_users: Descubra usuários
     documentation: Documentação
-    extended_description_html: |
-      <h3>Um bom lugar para regras</h3>
-      <p>A descrição da instância ainda não foi feita.</p>
     federation_hint_html: Com uma conta em %{instance} você vai poder seguir pessoas em qualquer servidor Mastodon ou outros do fediverso.
     generic_description: "%{domain} é um servidor na rede"
     get_apps: Experimente um aplicativo
@@ -451,18 +448,6 @@ pt-BR:
       no_status_selected: Nenhum status foi modificado porque nenhum estava selecionado
       title: Postagens da conta
       with_media: Com mídia
-    subscriptions:
-      callback_url: URL de Callback
-      confirmed: Confirmado
-      expires_in: Expira em
-      last_delivery: Última entrega
-      topic: Tópico
-    tags:
-      accounts: Contas
-      hidden: Escondido
-      hide: Esconder do diretório
-      unhide: Mostrar no diretório
-      visible: Visível
     title: Administração
     warning_presets:
       add_new: Adicionar um novo
@@ -496,7 +481,6 @@ pt-BR:
     apply_for_account: Pedir um convite
     change_password: Senha
     checkbox_agreement_html: Eu concordo com <a href="%{rules_path}" target="_blank">as regras do servidor</a> e com <a href="%{terms_path}" target="_blank">os termos de serviço</a>
-    confirm_email: Confirmar e-mail
     delete_account: Excluir conta
     delete_account_html: Se você deseja excluir a sua conta, você pode <a href="%{path}">prosseguir para cá</a>. Uma confirmação será requisitada.
     didnt_get_confirmation: Não recebeu instruções de confirmação?
@@ -539,26 +523,18 @@ pt-BR:
       x_months: "%{count} meses"
       x_seconds: "%{count} segundos"
   deletes:
-    bad_password_msg: Boa tentativa, hackers! Senha incorreta
     confirm_password: Insira a sua senha atual para verificar a sua identidade
-    description_html: Isto vai <strong>permanente e irreversivelmente</strong> remover conteúdo de sua conta e desativá-la. O seu nome de usuário permanecerá reservado para previnir futuros roubos de identidade.
     proceed: Excluir conta
     success_msg: A sua conta foi excluída com sucesso
-    warning_html: Apenas a exclusão de conteúdo desta instância em particular é garantida. Conteúdo que tenha sido largamente compartilhado muito provavelmente deixará traços. Servidores offline e servidores que se desinscreveram de suas atualizações não irão atualizar as suas bases de dados.
-    warning_title: Disponibilidade de conteúdo disseminado
   directories:
     directory: Diretório de perfis
-    enabled: Você está na lista do diretório.
-    enabled_but_waiting: Você escolheu ser listado no diretório, mas você ainda não tem o mínimo de seguidores (%{min_followers}) para ser listado.
     explanation: Descobrir usuários baseado em seus interesses
     explore_mastodon: Explorar %{title}
-    how_to_enable: Você não se inscreveu no diretório. Você pode se inscrever abaixo. Use hashtags no texto da sua bio para ser listado em hashtags específicas!
-    people:
-      one: "%{count} pessoa"
-      other: "%{count} pessoas"
   errors:
+    '400': The request you submitted was invalid or malformed.
     '403': Você não tem permissão para ver esta página.
     '404': A página pela qual você está procurando não existe.
+    '406': This page is not available in the requested format.
     '410': A página pela qual você está procurando não existe mais.
     '422':
       content: A verificação de segurança falhou. Você desativou o uso de cookies?
@@ -567,6 +543,7 @@ pt-BR:
     '500':
       content: Desculpe, algo deu errado.
       title: Esta página não está certa
+    '503': The page could not be served due to a temporary server failure.
     noscript_html: Para usar o aplicativo web do Mastodon, por favor ative o JavaScript. Ou, se quiser, experimente um dos <a href="%{apps_path}">apps nativos</a> para o Mastodon em sua plataforma.
   existing_username_validator:
     not_found: não foi possível encontrar um usuário local com esse nome de usuário
@@ -684,9 +661,6 @@ pt-BR:
       too_many: Não é possível anexar mais de 4 imagens
   migrations:
     acct: username@domain da nova conta
-    currently_redirecting: 'Seu perfil está configurado para redirecionar para:'
-    proceed: Salvar
-    updated_msg: As configurações de migração da sua conta foram atualizadas com sucesso!
   moderation:
     title: Moderação
   notification_mailer:
@@ -770,10 +744,6 @@ pt-BR:
     reply:
       proceed: Proceder para responder
       prompt: 'Você quer responder à esse toot:'
-  remote_unfollow:
-    error: Erro
-    title: Título
-    unfollowed: Deixou de seguir
   scheduled_statuses:
     over_daily_limit: Você excedeu o limite de %{limit} toots planejados para esse dia
     over_total_limit: Você excedeu o limite de %{limit} toots planejados

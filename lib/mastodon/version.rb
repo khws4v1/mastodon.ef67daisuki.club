@@ -29,7 +29,7 @@ module Mastodon
     end
 
     def to_s
-      [to_a.join('.'), flags, suffix].join + '_ef67_myhome_cx'
+      [to_a.join('.'), flags, suffix].join + '_ef67_myhome_cx1'
     end
 
     def repository

@@ -4,8 +4,8 @@ require 'mime/types/columnar'
 
 module Attachmentable
   extend ActiveSupport::Concern
-
   MAX_MATRIX_LIMIT = 20_248_705 # 5028x3888px or approx. 20MB
+  GIF_MATRIX_LIMIT = 921_600    # 1280x720px
 
   included do
     before_post_process :set_file_extensions
@@ -42,8 +42,9 @@ module Attachmentable
       next if attachment.blank? || !/image.*/.match?(attachment.content_type) || attachment.queued_for_write[:original].blank?
 
       width, height = FastImage.size(attachment.queued_for_write[:original].path)
+      matrix_limit  = attachment.content_type == 'image/gif' ? GIF_MATRIX_LIMIT : MAX_MATRIX_LIMIT
 
-      raise Mastodon::DimensionsValidationError, "#{width}x#{height} images are not supported, must be below #{MAX_MATRIX_LIMIT} sqpx" if width.present? && height.present? && (width * height >= MAX_MATRIX_LIMIT)
+      raise Mastodon::DimensionsValidationError, "#{width}x#{height} images are not supported" if width.present? && height.present? && (width * height > matrix_limit)
     end
   end
 

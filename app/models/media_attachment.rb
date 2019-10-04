@@ -115,6 +115,7 @@ class MediaAttachment < ApplicationRecord
     original: VIDEO_FORMAT,
   }.freeze
 
+  IMAGE_LIMIT = 10.megabytes
   VIDEO_LIMIT = 100.megabytes
 
   belongs_to :account,          inverse_of: :media_attachments, optional: true

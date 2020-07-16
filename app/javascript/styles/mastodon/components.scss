@@ -6645,6 +6645,20 @@ noscript {
       margin-bottom: 5px;
     }
 
+    &__display {
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 10px;
+      margin: 0 -10px;
+      white-space: pre-wrap;
+
+      &.empty {
+        color: $darker-text-color;
+      }
+
+    }
+
     textarea {
       display: block;
       box-sizing: border-box;
@@ -6669,6 +6683,7 @@ noscript {
         background: $ui-base-color;
       }
     }
+
   }
 }
 

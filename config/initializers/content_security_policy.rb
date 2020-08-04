@@ -16,6 +16,9 @@ media_host ||= host_to_url(ENV['S3_CLOUDFRONT_HOST'])
 media_host ||= host_to_url(ENV['S3_HOSTNAME']) if ENV['S3_ENABLED'] == 'true'
 media_host ||= assets_host
 
+opensticker_host     = 'https://s.0px.io'
+opensticker_img_host = 'https://c.0px.io'
+
 Rails.application.config.content_security_policy do |p|
   p.base_uri        :none
   p.default_src     :none
@@ -23,9 +26,10 @@ Rails.application.config.content_security_policy do |p|
   p.font_src        :self, assets_host
   p.img_src         :self, :https, :data, :blob, assets_host
   p.style_src       :self, assets_host
-  p.media_src       :self, :https, :data, assets_host
+  p.media_src       :self, :https, :data, assets_host, opensticker_img_host
   p.frame_src       :self, :https
   p.manifest_src    :self, assets_host
+  p.connect_src     :self, opensticker_host
 
   if Rails.env.development?
     webpacker_urls = %w(ws http).map { |protocol| "#{protocol}#{Webpacker.dev_server.https? ? 's' : ''}://#{Webpacker.dev_server.host_with_port}" }

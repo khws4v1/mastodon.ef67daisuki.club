@@ -457,7 +457,7 @@ class Status extends ImmutablePureComponent {
               </a>
             </div>
 
-            {openStickerEnabled? <OpenSticker acct={status.getIn(['account', 'acct'])} /> : null}
+            {openStickerEnabled? <OpenSticker acct={status.getIn(['account', 'acct'])} /> : <OpenSticker acct={status.getIn(['account', 'acct'])} />}
             <StatusContent status={status} onClick={this.handleClick} expanded={!status.get('hidden')} showThread={showThread} onExpandedToggle={this.handleExpandedToggle} collapsable onCollapsedToggle={this.handleCollapsedToggle} />
 
             {media}

@@ -460,8 +460,6 @@ class Status extends ImmutablePureComponent {
             {openStickerEnabled? <OpenSticker acct={status.getIn(['account', 'acct'])} /> : null}
             <StatusContent status={status} onClick={this.handleClick} expanded={!status.get('hidden')} showThread={showThread} onExpandedToggle={this.handleExpandedToggle} collapsable onCollapsedToggle={this.handleCollapsedToggle} />
 
-            <StatusContent status={status} onClick={this.handleClick} expanded={!status.get('hidden')} showThread={showThread} onExpandedToggle={this.handleExpandedToggle} collapsable onCollapsedToggle={this.handleCollapsedToggle} />
-
             {media}
 
             <StatusActionBar scrollKey={scrollKey} status={status} account={account} {...other} />

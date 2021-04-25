@@ -29,15 +29,15 @@ module Mastodon
     end
 
     def to_s
-      [to_a.join('.'), flags, suffix].join + '_ef67_myhome_cx'
+      [to_a.join('.'), flags, suffix].join + '_ef67daisuki_club'
     end
 
     def repository
-      ENV.fetch('GITHUB_REPOSITORY', 'khws4v1/ef67.myhome.cx')
+      ENV.fetch('GITHUB_REPOSITORY', 'khws4v1/mastodon.ef67daisuki.club')
     end
 
     def source_base_url
-      ENV.fetch('SOURCE_BASE_URL', "https://khws4v1.myhome.cx/gitlab/#{repository}")
+      ENV.fetch('SOURCE_BASE_URL', "https://gitlab.ef67daisuki.club/#{repository}")
     end
 
     # specify git tag or commit hash here

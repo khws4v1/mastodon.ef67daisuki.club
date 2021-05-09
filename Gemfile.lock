@@ -13,14 +13,6 @@ GIT
   specs:
     nilsimsa (1.1.2)
 
-GIT
-  remote: https://gitlab.ef67daisuki.club/khws4v1/mimemagic-0.3.5
-  revision: 09ac528565f46e6b865c7c044a9f255683231411
-  ref: 09ac528565f46e6b865c7c044a9f255683231411
-  branch: main
-  specs:
-    mimemagic (0.3.5)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -354,6 +346,7 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2020.0512)
+    mimemagic (0.3.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.2)
@@ -747,7 +740,6 @@ DEPENDENCIES
   memory_profiler
   microformats (~> 4.2)
   mime-types (~> 3.3.1)
-  mimemagic!
   net-ldap (~> 0.16)
   nilsimsa!
   nokogiri (~> 1.10)

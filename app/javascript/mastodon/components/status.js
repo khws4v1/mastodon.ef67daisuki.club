@@ -16,8 +16,9 @@ import { MediaGallery, Video, Audio } from '../features/ui/util/async-components
 import { HotKeys } from 'react-hotkeys';
 import classNames from 'classnames';
 import Icon from 'mastodon/components/icon';
-import { displayMedia } from '../initial_state';
+import { displayMedia, openStickerEnabled } from '../initial_state';
 import PictureInPicturePlaceholder from 'mastodon/components/picture_in_picture_placeholder';
+import OpenSticker from 'os-mastodon-component';
 
 // We use the component (and not the container) since we do not want
 // to use the progress bar to show download progress
@@ -481,6 +482,7 @@ class Status extends ImmutablePureComponent {
               </a>
             </div>
 
+            {openStickerEnabled? <OpenSticker acct={status.getIn(['account', 'acct'])} /> : null}
             <StatusContent status={status} onClick={this.handleClick} expanded={!status.get('hidden')} showThread={showThread} onExpandedToggle={this.handleExpandedToggle} collapsable onCollapsedToggle={this.handleCollapsedToggle} />
 
             {media}

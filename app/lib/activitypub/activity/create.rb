@@ -378,15 +378,6 @@ class ActivityPub::Activity::Create < ActivityPub::Activity
     mime_type.present? && !MediaAttachment.supported_mime_types.include?(mime_type)
   end
 
-  def supported_blurhash?(blurhash)
-    components = blurhash.blank? || !blurhash_valid_chars?(blurhash) ? nil : Blurhash.components(blurhash)
-    components.present? && components.none? { |comp| comp > 5 }
-  end
-
-  def blurhash_valid_chars?(blurhash)
-    /^[\w#$%*+-.:;=?@\[\]^{|}~]+$/.match?(blurhash)
-  end
-
   def skip_download?
     return @skip_download if defined?(@skip_download)
 

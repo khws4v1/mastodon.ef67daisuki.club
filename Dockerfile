@@ -58,6 +58,7 @@ COPY Gemfile* package.json yarn.lock /opt/mastodon/
 RUN cd /opt/mastodon && \
   bundle config set --local deployment 'true' && \
   bundle config set --local without 'development test' && \
+  bundle config set silence_root_warning true && \
 	bundle install -j"$(nproc)" && \
 	yarn install --pure-lockfile
 

@@ -10,14 +10,7 @@ module Admin
     def index
       authorize :status, :index?
 
-      @statuses = @account.statuses.where(visibility: [:public, :unlisted])
-
-      if params[:media]
-        @statuses.merge!(Status.joins(:media_attachments).merge(@account.media_attachments.reorder(nil)).group(:id)).reorder('statuses.id desc')
-      end
-
-      @statuses = @statuses.preload(:media_attachments, :mentions).page(params[:page]).per(PER_PAGE)
-      @form     = Form::StatusBatch.new
+      @status_batch_action = Admin::StatusBatchAction.new
     end
 
     def batch

@@ -28,7 +28,6 @@ th:
     learn_more: เรียนรู้เพิ่มเติม
     logged_in_as_html: คุณกำลังเข้าสู่ระบบเป็น %{username} ในปัจจุบัน
     logout_before_registering: คุณได้เข้าสู่ระบบอยู่แล้ว
-    privacy_policy: นโยบายความเป็นส่วนตัว
     rules: กฎของเซิร์ฟเวอร์
     rules_html: 'ด้านล่างคือข้อมูลสรุปของกฎที่คุณจำเป็นต้องปฏิบัติตามหากคุณต้องการมีบัญชีในเซิร์ฟเวอร์ Mastodon นี้:'
     see_whats_happening: ดูสิ่งที่กำลังเกิดขึ้น
@@ -38,7 +37,6 @@ th:
       other: โพสต์
     status_count_before: ผู้เผยแพร่
     tagline: เครือข่ายสังคมแบบกระจายศูนย์
-    terms: เงื่อนไขการให้บริการ
     unavailable_content: เซิร์ฟเวอร์ที่มีการควบคุม
     unavailable_content_description:
       domain: เซิร์ฟเวอร์
@@ -292,6 +290,7 @@ th:
         confirm_user_html: "%{name} ได้ยืนยันที่อยู่อีเมลของผู้ใช้ %{target}"
         create_account_warning_html: "%{name} ได้ส่งคำเตือนไปยัง %{target}"
         create_announcement_html: "%{name} ได้สร้างประกาศใหม่ %{target}"
+        create_canonical_email_block_html: "%{name} ได้ปิดกั้นอีเมลที่มีแฮช %{target}"
         create_custom_emoji_html: "%{name} ได้อัปโหลดอีโมจิใหม่ %{target}"
         create_domain_allow_html: "%{name} ได้อนุญาตการติดต่อกับภายนอกกับโดเมน %{target}"
         create_domain_block_html: "%{name} ได้ปิดกั้นโดเมน %{target}"
@@ -301,6 +300,7 @@ th:
         create_user_role_html: "%{name} ได้สร้างบทบาท %{target}"
         demote_user_html: "%{name} ได้ลดขั้นผู้ใช้ %{target}"
         destroy_announcement_html: "%{name} ได้ลบประกาศ %{target}"
+        destroy_canonical_email_block_html: "%{name} ได้เลิกปิดกั้นอีเมลที่มีแฮช %{target}"
         destroy_custom_emoji_html: "%{name} ได้ลบอีโมจิ %{target}"
         destroy_domain_allow_html: "%{name} ได้ไม่อนุญาตการติดต่อกับภายนอกกับโดเมน %{target}"
         destroy_domain_block_html: "%{name} ได้เลิกปิดกั้นโดเมน %{target}"
@@ -658,7 +658,9 @@ th:
         other: "%{count} สิทธิอนุญาต"
       privileges:
         administrator: ผู้ดูแล
+        administrator_description: ผู้ใช้ที่มีสิทธิอนุญาตนี้จะข้ามทุกสิทธิอนุญาต
         delete_user_data: ลบข้อมูลผู้ใช้
+        delete_user_data_description: อนุญาตให้ผู้ใช้ลบข้อมูลของผู้ใช้อื่น ๆ โดยทันที
         invite_users: เชิญผู้ใช้
         invite_users_description: อนุญาตให้ผู้ใช้เชิญผู้คนใหม่ไปยังเซิร์ฟเวอร์
         manage_announcements: จัดการประกาศ
@@ -674,6 +676,7 @@ th:
         manage_invites: จัดการคำเชิญ
         manage_invites_description: อนุญาตให้ผู้ใช้เรียกดูและปิดใช้งานลิงก์เชิญ
         manage_reports: จัดการรายงาน
+        manage_reports_description: อนุญาตให้ผู้ใช้ตรวจทานรายงานและทำการกระทำการควบคุมกับรายงาน
         manage_roles: จัดการบทบาท
         manage_rules: จัดการกฎ
         manage_rules_description: อนุญาตให้ผู้ใช้เปลี่ยนกฎของเซิร์ฟเวอร์
@@ -683,6 +686,9 @@ th:
         manage_taxonomies_description: อนุญาตให้ผู้ใช้ตรวจทานเนื้อหาที่กำลังนิยมและอัปเดตการตั้งค่าแฮชแท็ก
         manage_user_access: จัดการการเข้าถึงของผู้ใช้
         manage_users: จัดการผู้ใช้
+        manage_users_description: อนุญาตให้ผู้ใช้ดูรายละเอียดของผู้ใช้อื่น ๆ และทำการกระทำการควบคุมกับผู้ใช้
+        manage_webhooks: จัดการเว็บฮุค
+        manage_webhooks_description: อนุญาตให้ผู้ใช้ตั้งค่าเว็บฮุคสำหรับเหตุการณ์การดูแล
         view_audit_log: ดูรายการบันทึกการตรวจสอบ
         view_audit_log_description: อนุญาตให้ผู้ใช้ดูประวัติการกระทำการดูแลในเซิร์ฟเวอร์
         view_dashboard: ดูแดชบอร์ด
@@ -760,9 +766,6 @@ th:
       site_short_description:
         desc_html: แสดงในแถบข้างและแท็กเมตา อธิบายว่า Mastodon คืออะไรและสิ่งที่ทำให้เซิร์ฟเวอร์นี้พิเศษในย่อหน้าเดียว
         title: คำอธิบายเซิร์ฟเวอร์แบบสั้น
-      site_terms:
-        desc_html: คุณสามารถเขียนนโยบายความเป็นส่วนตัว, เงื่อนไขการให้บริการ หรือภาษากฎหมายอื่น ๆ ของคุณเอง คุณสามารถใช้แท็ก HTML
-        title: เงื่อนไขการให้บริการที่กำหนดเอง
       site_title: ชื่อเซิร์ฟเวอร์
       thumbnail:
         desc_html: ใช้สำหรับการแสดงตัวอย่างผ่าน OpenGraph และ API 1200x630px ที่แนะนำ
@@ -771,6 +774,8 @@ th:
         desc_html: แสดงลิงก์ไปยังเส้นเวลาสาธารณะในหน้าเริ่มต้นและอนุญาตการเข้าถึง API ไปยังเส้นเวลาสาธารณะโดยไม่มีการรับรองความถูกต้อง
         title: อนุญาตการเข้าถึงเส้นเวลาสาธารณะที่ไม่ได้รับรองความถูกต้อง
       title: การตั้งค่าไซต์
+      trendable_by_default:
+        title: อนุญาตแนวโน้มโดยไม่มีการตรวจทานล่วงหน้า
       trends:
         desc_html: แสดงเนื้อหาที่ตรวจทานแล้วก่อนหน้านี้ที่กำลังนิยมในปัจจุบันเป็นสาธารณะ
         title: แนวโน้ม
@@ -800,8 +805,11 @@ th:
         suspend: "%{name} ได้ระงับบัญชีของ %{target}"
       appeal_approved: อุทธรณ์แล้ว
     system_checks:
+      elasticsearch_running_check:
+        message_html: ไม่สามารถเชื่อมต่อกับ Elasticsearch โปรดตรวจสอบว่าซอฟต์แวร์กำลังทำงาน หรือปิดใช้งานการค้นหาข้อความแบบเต็ม
       elasticsearch_version_check:
         message_html: 'รุ่น Elasticsearch ที่เข้ากันไม่ได้: %{value}'
+        version_comparison: Elasticsearch %{running_version} กำลังทำงานขณะที่ต้องการ %{required_version}
       rules_check:
         action: จัดการกฎของเซิร์ฟเวอร์
         message_html: คุณไม่ได้กำหนดกฎของเซิร์ฟเวอร์ใด ๆ
@@ -879,7 +887,10 @@ th:
       enabled_events:
         other: "%{count} เหตุการณ์ที่เปิดใช้งาน"
       events: เหตุการณ์
+      new: เว็บฮุคใหม่
       status: สถานะ
+      title: เว็บฮุค
+      webhook: เว็บฮุค
   admin_mailer:
     new_appeal:
       actions:
@@ -978,6 +989,7 @@ th:
     setup:
       email_below_hint_html: หากที่อยู่อีเมลด้านล่างไม่ถูกต้อง คุณสามารถเปลี่ยนที่อยู่อีเมลที่นี่และรับอีเมลยืนยันใหม่
       email_settings_hint_html: ส่งอีเมลยืนยันไปยัง %{email} แล้ว หากที่อยู่อีเมลนั้นไม่ถูกต้อง คุณสามารถเปลี่ยนที่อยู่อีเมลได้ในการตั้งค่าบัญชี
+      title: การตั้งค่า
     status:
       account_status: สถานะบัญชี
       confirming: กำลังรอการยืนยันอีเมลให้เสร็จสมบูรณ์
@@ -1152,6 +1164,10 @@ th:
     trending_now: กำลังนิยม
   generic:
     all: ทั้งหมด
+    all_items_on_page_selected_html:
+      other: เลือกอยู่ทั้งหมด <strong>%{count}</strong> รายการในหน้านี้
+    all_matching_items_selected_html:
+      other: เลือกอยู่ทั้งหมด <strong>%{count}</strong> รายการที่ตรงกับการค้นหาของคุณ
     changes_saved_msg: บันทึกการเปลี่ยนแปลงสำเร็จ!
     copy: คัดลอก
     delete: ลบ
@@ -1159,6 +1175,8 @@ th:
     none: ไม่มี
     order_by: เรียงลำดับตาม
     save_changes: บันทึกการเปลี่ยนแปลง
+    select_all_matching_items:
+      other: เลือกทั้งหมด %{count} รายการที่ตรงกับการค้นหาของคุณ
     today: วันนี้
     validation_errors:
       other: ยังมีบางอย่างไม่ถูกต้อง! โปรดตรวจทาน %{count} ข้อผิดพลาดด้านล่าง
@@ -1513,8 +1531,6 @@ th:
     sensitive_content: เนื้อหาที่ละเอียดอ่อน
   tags:
     does_not_match_previous_name: ไม่ตรงกับชื่อก่อนหน้านี้
-  terms:
-    title: เงื่อนไขการให้บริการและนโยบายความเป็นส่วนตัวของ %{instance}
   themes:
     contrast: Mastodon (ความคมชัดสูง)
     default: Mastodon (มืด)

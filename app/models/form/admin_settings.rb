@@ -13,13 +13,11 @@ class Form::AdminSettings
     site_terms
     registrations_mode
     closed_registrations_message
-    open_deletion
     timeline_preview
     bootstrap_timeline_accounts
     theme
     activity_api_enabled
     peers_api_enabled
-    show_known_fediverse_at_about_page
     preview_sensitive_media
     custom_css
     profile_directory
@@ -38,11 +36,9 @@ class Form::AdminSettings
   ).freeze
 
   BOOLEAN_KEYS = %i(
-    open_deletion
     timeline_preview
     activity_api_enabled
     peers_api_enabled
-    show_known_fediverse_at_about_page
     preview_sensitive_media
     profile_directory
     trends

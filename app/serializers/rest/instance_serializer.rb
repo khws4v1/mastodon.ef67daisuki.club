@@ -17,7 +17,20 @@ class REST::InstanceSerializer < ActiveModel::Serializer
   has_many :rules, serializer: REST::RuleSerializer
 
   def thumbnail
-    object.thumbnail ? full_asset_url(object.thumbnail.file.url) : full_pack_url('media/images/preview.png')
+    if object.thumbnail
+      {
+        url: full_asset_url(object.thumbnail.file.url(:'@1x')),
+        blurhash: object.thumbnail.blurhash,
+        versions: {
+          '@1x': full_asset_url(object.thumbnail.file.url(:'@1x')),
+          '@2x': full_asset_url(object.thumbnail.file.url(:'@2x')),
+        },
+      }
+    else
+      {
+        url: full_pack_url('media/images/preview.png'),
+      }
+    end
   end
 
   def usage
@@ -32,6 +45,10 @@ class REST::InstanceSerializer < ActiveModel::Serializer
     {
       urls: {
         streaming: Rails.configuration.x.streaming_api_base_url,
+      },
+
+      accounts: {
+        max_featured_tags: FeaturedTag::LIMIT,
       },
 
       statuses: {
@@ -54,6 +71,10 @@ class REST::InstanceSerializer < ActiveModel::Serializer
         max_characters_per_option: PollValidator::MAX_OPTION_CHARS,
         min_expiration: PollValidator::MIN_EXPIRATION,
         max_expiration: PollValidator::MAX_EXPIRATION,
+      },
+
+      translation: {
+        enabled: TranslationService.configured?,
       },
     }
   end

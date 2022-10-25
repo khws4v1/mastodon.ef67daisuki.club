@@ -231,6 +231,15 @@
   {
     "descriptors": [
       {
+        "defaultMessage": "Dismiss",
+        "id": "dismissable_banner.dismiss"
+      }
+    ],
+    "path": "app/javascript/mastodon/components/dismissable_banner.json"
+  },
+  {
+    "descriptors": [
+      {
         "defaultMessage": "Unblock domain {domain}",
         "id": "account.unblock_domain"
       }
@@ -832,6 +841,62 @@
       {
         "defaultMessage": "About",
         "id": "column.about"
+      },
+      {
+        "defaultMessage": "Server rules",
+        "id": "about.rules"
+      },
+      {
+        "defaultMessage": "Moderated servers",
+        "id": "about.blocks"
+      },
+      {
+        "defaultMessage": "Limited",
+        "id": "about.domain_blocks.silenced.title"
+      },
+      {
+        "defaultMessage": "You will generally not see profiles and content from this server, unless you explicitly look it up or opt into it by following.",
+        "id": "about.domain_blocks.silenced.explanation"
+      },
+      {
+        "defaultMessage": "Suspended",
+        "id": "about.domain_blocks.suspended.title"
+      },
+      {
+        "defaultMessage": "No data from this server will be processed, stored or exchanged, making any interaction or communication with users from this server impossible.",
+        "id": "about.domain_blocks.suspended.explanation"
+      },
+      {
+        "defaultMessage": "Decentralized social media powered by {mastodon}",
+        "id": "about.powered_by"
+      },
+      {
+        "defaultMessage": "Administered by:",
+        "id": "server_banner.administered_by"
+      },
+      {
+        "defaultMessage": "Contact:",
+        "id": "about.contact"
+      },
+      {
+        "defaultMessage": "This information has not been made available on this server.",
+        "id": "about.not_available"
+      },
+      {
+        "defaultMessage": "Mastodon generally allows you to view content from and interact with users from any other server in the fediverse. These are the exceptions that have been made on this particular server.",
+        "id": "about.domain_blocks.preamble"
+      },
+      {
+        "defaultMessage": "Domain",
+        "id": "about.domain_blocks.domain"
+      },
+      {
+        "defaultMessage": "Severity",
+        "id": "about.domain_blocks.severity"
+      },
+      {
+        "defaultMessage": "Reason",
+        "id": "about.domain_blocks.comment"
       }
     ],
     "path": "app/javascript/mastodon/features/about/index.json"
@@ -891,6 +956,10 @@
   {
     "descriptors": [
       {
+        "defaultMessage": "Withdraw request",
+        "id": "confirmations.cancel_follow_request.confirm"
+      },
+      {
         "defaultMessage": "Unfollow",
         "id": "confirmations.unfollow.confirm"
       },
@@ -901,6 +970,10 @@
       {
         "defaultMessage": "Are you sure you want to unfollow {name}?",
         "id": "confirmations.unfollow.message"
+      },
+      {
+        "defaultMessage": "Are you sure you want to withdraw your request to follow {name}?",
+        "id": "confirmations.cancel_follow_request.message"
       },
       {
         "defaultMessage": "Are you really, really sure you want to block the entire {domain}? In most cases a few targeted blocks or mutes are sufficient and preferable. You will not see content from that domain in any public timelines or your notifications. Your followers from that domain will be removed.",
@@ -950,6 +1023,23 @@
   {
     "descriptors": [
       {
+        "defaultMessage": "Last post on {date}",
+        "id": "account.featured_tags.last_status_at"
+      },
+      {
+        "defaultMessage": "No posts",
+        "id": "account.featured_tags.last_status_never"
+      },
+      {
+        "defaultMessage": "{name}'s featured hashtags",
+        "id": "account.featured_tags.title"
+      }
+    ],
+    "path": "app/javascript/mastodon/features/account/components/featured_tags.json"
+  },
+  {
+    "descriptors": [
+      {
         "defaultMessage": "Unfollow",
         "id": "account.unfollow"
       },
@@ -958,7 +1048,7 @@
         "id": "account.follow"
       },
       {
-        "defaultMessage": "Cancel follow request",
+        "defaultMessage": "Withdraw follow request",
         "id": "account.cancel_follow_request"
       },
       {
@@ -1197,6 +1287,10 @@
       {
         "defaultMessage": "Local timeline",
         "id": "column.community"
+      },
+      {
+        "defaultMessage": "These are the most recent public posts from people whose accounts are hosted by {domain}.",
+        "id": "dismissable_banner.community_timeline"
       },
       {
         "defaultMessage": "The local timeline is empty. Write something publicly to get the ball rolling!",
@@ -1770,7 +1864,7 @@
         "id": "account.follow"
       },
       {
-        "defaultMessage": "Cancel follow request",
+        "defaultMessage": "Withdraw follow request",
         "id": "account.cancel_follow_request"
       },
       {
@@ -1886,6 +1980,10 @@
   {
     "descriptors": [
       {
+        "defaultMessage": "These news stories are being talked about by people on this and other servers of the decentralized network right now.",
+        "id": "dismissable_banner.explore_links"
+      },
+      {
         "defaultMessage": "Nothing is trending right now. Check back later!",
         "id": "empty_column.explore_statuses"
       }
@@ -1926,6 +2024,10 @@
       {
         "defaultMessage": "Nothing is trending right now. Check back later!",
         "id": "empty_column.explore_statuses"
+      },
+      {
+        "defaultMessage": "These posts from this and other servers in the decentralized network are gaining traction on this server right now.",
+        "id": "dismissable_banner.explore_statuses"
       }
     ],
     "path": "app/javascript/mastodon/features/explore/statuses.json"
@@ -1941,6 +2043,10 @@
   },
   {
     "descriptors": [
+      {
+        "defaultMessage": "These hashtags are gaining traction among people on this and other servers of the decentralized network right now.",
+        "id": "dismissable_banner.explore_tags"
+      },
       {
         "defaultMessage": "Nothing is trending right now. Check back later!",
         "id": "empty_column.explore_statuses"
@@ -2376,6 +2482,75 @@
       }
     ],
     "path": "app/javascript/mastodon/features/home_timeline/index.json"
+  },
+  {
+    "descriptors": [
+      {
+        "defaultMessage": "Copied",
+        "id": "copypaste.copied"
+      },
+      {
+        "defaultMessage": "Copy",
+        "id": "copypaste.copy"
+      },
+      {
+        "defaultMessage": "Reply to {name}'s post",
+        "id": "interaction_modal.title.reply"
+      },
+      {
+        "defaultMessage": "With an account on Mastodon, you can respond to this post.",
+        "id": "interaction_modal.description.reply"
+      },
+      {
+        "defaultMessage": "Boost {name}'s post",
+        "id": "interaction_modal.title.reblog"
+      },
+      {
+        "defaultMessage": "With an account on Mastodon, you can boost this post to share it with your own followers.",
+        "id": "interaction_modal.description.reblog"
+      },
+      {
+        "defaultMessage": "Favourite {name}'s post",
+        "id": "interaction_modal.title.favourite"
+      },
+      {
+        "defaultMessage": "With an account on Mastodon, you can favourite this post to let the author know you appreciate it and save it for later.",
+        "id": "interaction_modal.description.favourite"
+      },
+      {
+        "defaultMessage": "Follow {name}",
+        "id": "interaction_modal.title.follow"
+      },
+      {
+        "defaultMessage": "With an account on Mastodon, you can follow {name} to receive their posts in your home feed.",
+        "id": "interaction_modal.description.follow"
+      },
+      {
+        "defaultMessage": "Since Mastodon is decentralized, you can use your existing account hosted by another Mastodon server or compatible platform if you don't have an account on this one.",
+        "id": "interaction_modal.preamble"
+      },
+      {
+        "defaultMessage": "On this server",
+        "id": "interaction_modal.on_this_server"
+      },
+      {
+        "defaultMessage": "Sign in",
+        "id": "sign_in_banner.sign_in"
+      },
+      {
+        "defaultMessage": "Create account",
+        "id": "sign_in_banner.create_account"
+      },
+      {
+        "defaultMessage": "On a different server",
+        "id": "interaction_modal.on_another_server"
+      },
+      {
+        "defaultMessage": "Simply copy and paste this URL into the search bar of your favourite app or the web interface where you are signed in.",
+        "id": "interaction_modal.other_server_instructions"
+      }
+    ],
+    "path": "app/javascript/mastodon/features/interaction_modal/index.json"
   },
   {
     "descriptors": [
@@ -2990,6 +3165,19 @@
   {
     "descriptors": [
       {
+        "defaultMessage": "Privacy Policy",
+        "id": "privacy_policy.title"
+      },
+      {
+        "defaultMessage": "Last updated {date}",
+        "id": "privacy_policy.last_updated"
+      }
+    ],
+    "path": "app/javascript/mastodon/features/privacy_policy/index.json"
+  },
+  {
+    "descriptors": [
+      {
         "defaultMessage": "Media only",
         "id": "community.column_settings.media_only"
       },
@@ -3005,6 +3193,10 @@
       {
         "defaultMessage": "Federated timeline",
         "id": "column.public"
+      },
+      {
+        "defaultMessage": "These are the most recent public posts from people on this and other servers of the decentralized network that this server knows about.",
+        "id": "dismissable_banner.public_timeline"
       },
       {
         "defaultMessage": "There is nothing here! Write something publicly, or manually follow users from other servers to fill it up",
@@ -3510,16 +3702,44 @@
   {
     "descriptors": [
       {
-        "defaultMessage": "Network error",
-        "id": "bundle_column_error.title"
+        "defaultMessage": "Copied",
+        "id": "copypaste.copied"
       },
       {
-        "defaultMessage": "Something went wrong while loading this component.",
-        "id": "bundle_column_error.body"
+        "defaultMessage": "404",
+        "id": "bundle_column_error.routing.title"
+      },
+      {
+        "defaultMessage": "The requested page could not be found. Are you sure the URL in the address bar is correct?",
+        "id": "bundle_column_error.routing.body"
+      },
+      {
+        "defaultMessage": "Network error",
+        "id": "bundle_column_error.network.title"
+      },
+      {
+        "defaultMessage": "There was an error when trying to load this page. This could be due to a temporary problem with your internet connection or this server.",
+        "id": "bundle_column_error.network.body"
+      },
+      {
+        "defaultMessage": "Oh, no!",
+        "id": "bundle_column_error.error.title"
+      },
+      {
+        "defaultMessage": "The requested page could not be rendered. It could be due to a bug in our code, or a browser compatibility issue.",
+        "id": "bundle_column_error.error.body"
       },
       {
         "defaultMessage": "Try again",
         "id": "bundle_column_error.retry"
+      },
+      {
+        "defaultMessage": "Copy error report",
+        "id": "bundle_column_error.copy_stacktrace"
+      },
+      {
+        "defaultMessage": "Go back home",
+        "id": "bundle_column_error.return"
       }
     ],
     "path": "app/javascript/mastodon/features/ui/components/bundle_column_error.json"
@@ -3540,15 +3760,6 @@
       }
     ],
     "path": "app/javascript/mastodon/features/ui/components/bundle_modal_error.json"
-  },
-  {
-    "descriptors": [
-      {
-        "defaultMessage": "Publish",
-        "id": "compose_form.publish"
-      }
-    ],
-    "path": "app/javascript/mastodon/features/ui/components/columns_area.json"
   },
   {
     "descriptors": [
@@ -3686,10 +3897,14 @@
         "id": "navigation_bar.follow_requests"
       }
     ],
-    "path": "app/javascript/mastodon/features/ui/components/follow_requests_nav_link.json"
+    "path": "app/javascript/mastodon/features/ui/components/follow_requests_column_link.json"
   },
   {
     "descriptors": [
+      {
+        "defaultMessage": "Publish",
+        "id": "compose_form.publish"
+      },
       {
         "defaultMessage": "Sign in",
         "id": "sign_in_banner.sign_in"

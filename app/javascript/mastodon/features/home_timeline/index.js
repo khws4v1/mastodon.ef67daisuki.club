@@ -15,7 +15,6 @@ import classNames from 'classnames';
 import IconWithBadge from 'mastodon/components/icon_with_badge';
 import NotSignedInIndicator from 'mastodon/components/not_signed_in_indicator';
 import { Helmet } from 'react-helmet';
-import { title } from 'mastodon/initial_state';
 
 const messages = defineMessages({
   title: { id: 'column.home', defaultMessage: 'Home' },
@@ -167,7 +166,8 @@ class HomeTimeline extends React.PureComponent {
         ) : <NotSignedInIndicator />}
 
         <Helmet>
-          <title>{intl.formatMessage(messages.title)} - {title}</title>
+          <title>{intl.formatMessage(messages.title)}</title>
+          <meta name='robots' content='noindex' />
         </Helmet>
       </Column>
     );

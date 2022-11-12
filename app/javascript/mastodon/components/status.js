@@ -476,7 +476,7 @@ class Status extends ImmutablePureComponent {
           </Bundle>
         );
       }
-    } else if (status.get('spoiler_text').length === 0 && status.get('card') && !this.props.muted) {
+    } else if (status.get('spoiler_text').length === 0 && status.get('card')) {
       media = (
         <Card
           onOpenMedia={this.handleOpenMedia}

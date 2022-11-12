@@ -8,9 +8,7 @@ class MoveWorker
     @target_account = Account.find(target_account_id)
 
     if @target_account.local? && @source_account.local?
-      nb_moved = rewrite_follows!
-      @source_account.update_count!(:followers_count, -nb_moved)
-      @target_account.update_count!(:followers_count, nb_moved)
+      rewrite_follows!
     else
       queue_follow_unfollows!
     end

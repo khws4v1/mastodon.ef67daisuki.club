@@ -5,10 +5,6 @@ class IpBlockPolicy < ApplicationPolicy
     role.can?(:manage_blocks)
   end
 
-  def show?
-    role.can?(:manage_blocks)
-  end
-
   def create?
     role.can?(:manage_blocks)
   end

@@ -152,13 +152,6 @@ const mapDispatchToProps = (dispatch, { intl }) => ({
     }));
   },
 
-  onOpenAvatar (account) {
-    dispatch(openModal('IMAGE', {
-      src: account.get('avatar'),
-      alt: account.get('acct'),
-    }));
-  },
-
 });
 
 export default injectIntl(connect(makeMapStateToProps, mapDispatchToProps)(Header));

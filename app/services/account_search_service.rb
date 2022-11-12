@@ -3,8 +3,6 @@
 class AccountSearchService < BaseService
   attr_reader :query, :limit, :offset, :options, :account
 
-  MENTION_ONLY_RE = /\A#{Account::MENTION_RE}\z/i
-
   # Min. number of characters to look for non-exact matches
   MIN_QUERY_LENGTH = 5
 
@@ -182,7 +180,7 @@ class AccountSearchService < BaseService
   end
 
   def username_complete?
-    query.include?('@') && "@#{query}".match?(MENTION_ONLY_RE)
+    query.include?('@') && "@#{query}".match?(/\A#{Account::MENTION_RE}\Z/)
   end
 
   def likely_acct?

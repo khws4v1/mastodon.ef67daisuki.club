@@ -12,10 +12,10 @@ spec:
   template:
     metadata:
       name: {{ include "mastodon.fullname" . }}-db-migrate
-      {{- with .Values.jobAnnotations }}
+    {{- with .Values.jobAnnotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
-      {{- end }}
+    {{- end }}
     spec:
       restartPolicy: Never
       {{- if (not .Values.mastodon.s3.enabled) }}
@@ -27,7 +27,7 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
               matchExpressions:
-                - key: app.kubernetes.io/part-of
+                - key: component
                   operator: In
                   values:
                     - rails
@@ -60,7 +60,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ template "mastodon.postgresql.secretName" . }}
-                  key: password
+                  key: postgres-password
             - name: "REDIS_PASSWORD"
               valueFrom:
                 secretKeyRef:

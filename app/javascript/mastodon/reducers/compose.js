@@ -452,7 +452,6 @@ export default function compose(state = initialState, action) {
       map.set('idempotencyKey', uuid());
       map.set('sensitive', action.status.get('sensitive'));
       map.set('language', action.status.get('language'));
-      map.set('id', null);
 
       if (action.status.get('spoiler_text').length > 0) {
         map.set('spoiler', true);

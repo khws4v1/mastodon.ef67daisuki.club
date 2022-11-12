@@ -682,10 +682,6 @@
       {
         "defaultMessage": "Filter this post",
         "id": "status.filter"
-      },
-      {
-        "defaultMessage": "Open original page",
-        "id": "account.open_original_page"
       }
     ],
     "path": "app/javascript/mastodon/components/status_action_bar.json"
@@ -891,8 +887,16 @@
         "id": "about.domain_blocks.preamble"
       },
       {
-        "defaultMessage": "Reason not available",
-        "id": "about.domain_blocks.no_reason_available"
+        "defaultMessage": "Domain",
+        "id": "about.domain_blocks.domain"
+      },
+      {
+        "defaultMessage": "Severity",
+        "id": "about.domain_blocks.severity"
+      },
+      {
+        "defaultMessage": "Reason",
+        "id": "about.domain_blocks.comment"
       },
       {
         "defaultMessage": "Mastodon is free, open-source software, and a trademark of Mastodon gGmbH.",
@@ -947,12 +951,8 @@
   {
     "descriptors": [
       {
-        "defaultMessage": "{name} has indicated that their new account is now:",
+        "defaultMessage": "{name} has moved to:",
         "id": "account.moved_to"
-      },
-      {
-        "defaultMessage": "Go to profile",
-        "id": "account.go_to_profile"
       }
     ],
     "path": "app/javascript/mastodon/features/account_timeline/components/moved_note.json"
@@ -1182,10 +1182,6 @@
       {
         "defaultMessage": "Change subscribed languages",
         "id": "account.languages"
-      },
-      {
-        "defaultMessage": "Open original page",
-        "id": "account.open_original_page"
       },
       {
         "defaultMessage": "Follows you",
@@ -2603,7 +2599,7 @@
         "id": "interaction_modal.on_another_server"
       },
       {
-        "defaultMessage": "Copy and paste this URL into the search field of your favourite Mastodon app or the web interface of your Mastodon server.",
+        "defaultMessage": "Simply copy and paste this URL into the search bar of your favourite app or the web interface where you are signed in.",
         "id": "interaction_modal.other_server_instructions"
       }
     ],
@@ -3598,10 +3594,6 @@
       {
         "defaultMessage": "Unblock @{name}",
         "id": "account.unblock"
-      },
-      {
-        "defaultMessage": "Open original page",
-        "id": "account.open_original_page"
       }
     ],
     "path": "app/javascript/mastodon/features/status/components/action_bar.json"
@@ -3847,31 +3839,6 @@
   {
     "descriptors": [
       {
-        "defaultMessage": "Are you sure you want to log out?",
-        "id": "confirmations.logout.message"
-      },
-      {
-        "defaultMessage": "Log out",
-        "id": "confirmations.logout.confirm"
-      },
-      {
-        "defaultMessage": "Your account {disabledAccount} is currently disabled because you moved to {movedToAccount}.",
-        "id": "moved_to_account_banner.text"
-      },
-      {
-        "defaultMessage": "Your account {disabledAccount} is currently disabled.",
-        "id": "disabled_account_banner.text"
-      },
-      {
-        "defaultMessage": "Account settings",
-        "id": "disabled_account_banner.account_settings"
-      }
-    ],
-    "path": "app/javascript/mastodon/features/ui/components/disabled_account_banner.json"
-  },
-  {
-    "descriptors": [
-      {
         "defaultMessage": "Close",
         "id": "lightbox.close"
       },
@@ -4001,15 +3968,6 @@
       }
     ],
     "path": "app/javascript/mastodon/features/ui/components/header.json"
-  },
-  {
-    "descriptors": [
-      {
-        "defaultMessage": "Close",
-        "id": "lightbox.close"
-      }
-    ],
-    "path": "app/javascript/mastodon/features/ui/components/image_modal.json"
   },
   {
     "descriptors": [

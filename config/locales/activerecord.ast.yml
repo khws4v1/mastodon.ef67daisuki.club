@@ -12,11 +12,6 @@ ast:
         text: Motivu
     errors:
       models:
-        account:
-          attributes:
-            username:
-              invalid: ha contener namás lletres, númberos y guiones baxos
-              reserved: ta acutáu
         admin/webhook:
           attributes:
             url:
@@ -25,10 +20,6 @@ ast:
           attributes:
             website:
               invalid: nun ye una URL válida
-        status:
-          attributes:
-            reblog:
-              taken: d'artículos xá esisten
         user:
           attributes:
             email:

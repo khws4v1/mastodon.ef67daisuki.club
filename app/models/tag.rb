@@ -27,14 +27,11 @@ class Tag < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :account
 
   HASHTAG_SEPARATORS = "_\u00B7\u200c"
-  HASHTAG_NAME_PAT = "([[:word:]_][[:word:]#{HASHTAG_SEPARATORS}]*[[:alpha:]#{HASHTAG_SEPARATORS}][[:word:]#{HASHTAG_SEPARATORS}]*[[:word:]_])|([[:word:]_]*[[:alpha:]][[:word:]_]*)"
+  HASHTAG_NAME_RE    = "([[:word:]_][[:word:]#{HASHTAG_SEPARATORS}]*[[:alpha:]#{HASHTAG_SEPARATORS}][[:word:]#{HASHTAG_SEPARATORS}]*[[:word:]_])|([[:word:]_]*[[:alpha:]][[:word:]_]*)"
+  HASHTAG_RE         = /(?:^|[^\/\)\w])#(#{HASHTAG_NAME_RE})/i
 
-  HASHTAG_RE = /(?:^|[^\/\)\w])#(#{HASHTAG_NAME_PAT})/i
-  HASHTAG_NAME_RE = /\A(#{HASHTAG_NAME_PAT})\z/i
-  HASHTAG_INVALID_CHARS_RE = /[^[:alnum:]#{HASHTAG_SEPARATORS}]/
-
-  validates :name, presence: true, format: { with: HASHTAG_NAME_RE }
-  validates :display_name, format: { with: HASHTAG_NAME_RE }
+  validates :name, presence: true, format: { with: /\A(#{HASHTAG_NAME_RE})\z/i }
+  validates :display_name, format: { with: /\A(#{HASHTAG_NAME_RE})\z/i }
   validate :validate_name_change, if: -> { !new_record? && name_changed? }
   validate :validate_display_name_change, if: -> { !new_record? && display_name_changed? }
 
@@ -105,7 +102,7 @@ class Tag < ApplicationRecord
       names = Array(name_or_names).map { |str| [normalize(str), str] }.uniq(&:first)
 
       names.map do |(normalized_name, display_name)|
-        tag = matching_name(normalized_name).first || create(name: normalized_name, display_name: display_name.gsub(HASHTAG_INVALID_CHARS_RE, ''))
+        tag = matching_name(normalized_name).first || create(name: normalized_name, display_name: display_name.gsub(/[^[:alnum:]#{HASHTAG_SEPARATORS}]/, ''))
 
         yield tag if block_given?
 

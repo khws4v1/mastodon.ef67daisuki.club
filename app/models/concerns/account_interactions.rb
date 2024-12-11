@@ -83,6 +83,9 @@ module AccountInteractions
     has_many :following, -> { order('follows.id desc') }, through: :active_relationships,  source: :target_account
     has_many :followers, -> { order('follows.id desc') }, through: :passive_relationships, source: :account
 
+    # Hashtag follows
+    has_many :tag_follows, inverse_of: :account, dependent: :destroy
+
     # Account notes
     has_many :account_notes, dependent: :destroy
 
@@ -185,7 +188,7 @@ module AccountInteractions
   end
 
   def unblock_domain!(other_domain)
-    block = domain_blocks.find_by(domain: other_domain)
+    block = domain_blocks.find_by(domain: normalized_domain(other_domain))
     block&.destroy
   end
 
@@ -261,13 +264,13 @@ module AccountInteractions
   def followers_for_local_distribution
     followers.local
              .joins(:user)
-             .where('users.current_sign_in_at > ?', User::ACTIVE_DURATION.ago)
+             .merge(User.signed_in_recently)
   end
 
   def lists_for_local_distribution
     scope = lists.joins(account: :user)
     scope.where.not(list_accounts: { follow_id: nil }).or(scope.where(account_id: id))
-         .where('users.current_sign_in_at > ?', User::ACTIVE_DURATION.ago)
+         .merge(User.signed_in_recently)
   end
 
   def remote_followers_hash(url)
@@ -312,5 +315,9 @@ module AccountInteractions
 
   def remove_potential_friendship(other_account)
     PotentialFriendshipTracker.remove(id, other_account.id)
+  end
+
+  def normalized_domain(domain)
+    TagManager.instance.normalize_domain(domain)
   end
 end

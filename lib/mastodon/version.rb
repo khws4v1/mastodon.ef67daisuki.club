@@ -9,11 +9,11 @@ module Mastodon
     end
 
     def minor
-      2
+      3
     end
 
     def patch
-      14
+      0
     end
 
     def default_prerelease
@@ -36,19 +36,25 @@ module Mastodon
       components = [to_a.join('.')]
       components << "-#{prerelease}" if prerelease.present?
       components << "+#{build_metadata}" if build_metadata.present?
-      components.join + '_ef67daisuki_club'
+      components.join
     end
 
     def gem_version
       @gem_version ||= Gem::Version.new(to_s.split('+')[0])
     end
 
+    def api_versions
+      {
+        mastodon: 2,
+      }
+    end
+
     def repository
-      ENV.fetch('GITHUB_REPOSITORY', 'khws4v1/mastodon.ef67daisuki.club')
+      ENV.fetch('GITHUB_REPOSITORY', 'mastodon/mastodon')
     end
 
     def source_base_url
-      ENV.fetch('SOURCE_BASE_URL', "https://gitlab.ef67daisuki.club/#{repository}")
+      ENV.fetch('SOURCE_BASE_URL', "https://github.com/#{repository}")
     end
 
     # specify git tag or commit hash here
@@ -65,7 +71,7 @@ module Mastodon
     end
 
     def user_agent
-      @user_agent ||= "#{HTTP::Request::USER_AGENT} (Mastodon/#{Version}; +http#{Rails.configuration.x.use_https ? 's' : ''}://#{Rails.configuration.x.web_domain}/)"
+      @user_agent ||= "Mastodon/#{Version} (#{HTTP::Request::USER_AGENT}; +http#{Rails.configuration.x.use_https ? 's' : ''}://#{Rails.configuration.x.web_domain}/)"
     end
   end
 end

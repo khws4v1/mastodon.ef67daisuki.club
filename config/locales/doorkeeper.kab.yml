@@ -121,7 +121,6 @@ kab:
       admin:
         nav:
           applications: Isnasen
-          oauth2_provider: Asaǧǧaw OAuth2
       application:
         title: Tlaq tsiregt n OAuth
     scopes:

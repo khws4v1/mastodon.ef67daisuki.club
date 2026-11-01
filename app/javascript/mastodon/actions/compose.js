@@ -96,16 +96,11 @@ export const ensureComposeIsVisible = (getState) => {
 };
 
 export function setComposeToStatus(status, text, spoiler_text) {
-  return (dispatch, getState) => {
-    const maxOptions = getState().server.getIn(['server', 'configuration', 'polls', 'max_options']);
-
-    dispatch({
-      type: COMPOSE_SET_STATUS,
-      status,
-      text,
-      spoiler_text,
-      maxOptions,
-    });
+  return{
+    type: COMPOSE_SET_STATUS,
+    status,
+    text,
+    spoiler_text,
   };
 }
 
@@ -419,7 +414,7 @@ export function initMediaEditModal(id) {
 
     dispatch(openModal({
       modalType: 'FOCAL_POINT',
-      modalProps: { id },
+      modalProps: { mediaId: id },
     }));
   };
 }

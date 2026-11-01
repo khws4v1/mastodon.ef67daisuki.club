@@ -15,9 +15,9 @@ class Api::V1::Polls::VotesController < Api::BaseController
   private
 
   def set_poll
-    @poll = Poll.attached.find(params[:poll_id])
+    @poll = Poll.find(params[:poll_id])
     authorize @poll.status, :show?
-  rescue ActiveRecord::RecordNotFound, Mastodon::NotPermittedError
+  rescue Mastodon::NotPermittedError
     not_found
   end
 

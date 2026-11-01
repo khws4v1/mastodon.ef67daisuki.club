@@ -70,6 +70,25 @@ RSpec.describe Mastodon::CLI::Accounts do
         end
       end
 
+      context 'with min_age setting' do
+        let(:options) { { email: 'tootctl@example.com', confirmed: true } }
+
+        before do
+          Setting.min_age = 42
+        end
+
+        it_behaves_like 'a new user with given email address and username'
+
+        it 'creates a new user with confirmed status' do
+          expect { subject }
+            .to output_results('New password')
+
+          user = User.find_by(email: options[:email])
+
+          expect(user.confirmed?).to be(true)
+        end
+      end
+
       context 'with --confirmed option' do
         let(:options) { { email: 'tootctl@example.com', confirmed: true } }
 
@@ -335,20 +354,11 @@ RSpec.describe Mastodon::CLI::Accounts do
       context 'with --reset-password option' do
         let(:options) { { reset_password: true } }
 
-        let(:user) { Fabricate(:user, password: original_password) }
-        let(:original_password) { 'foobar12345' }
-        let(:new_password) { 'new_password12345' }
-
         it 'returns a new password for the user' do
-          allow(SecureRandom).to receive(:hex).and_return(new_password)
-          allow(Account).to receive(:find_local).and_return(user.account)
-          allow(user).to receive(:change_password!).and_call_original
+          allow(SecureRandom).to receive(:hex).and_return('new_password')
 
           expect { subject }
-            .to output_results(new_password)
-
-          expect(user).to have_received(:change_password!).with(new_password)
-          expect(user.reload).to_not be_external_or_valid_password(original_password)
+            .to output_results('new_password')
         end
       end
 

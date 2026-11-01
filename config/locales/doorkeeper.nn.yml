@@ -131,7 +131,7 @@ nn:
         favourites: Favorittar
         filters: Filter
         follow: Dei du fylgjer, dempar og blokkerer
-        follows: Fylgje
+        follows: Fylgjer
         lists: Lister
         media: Mediavedlegg
         mutes: Dempingar
@@ -175,7 +175,7 @@ nn:
       read:bookmarks: sjå bokmerka dine
       read:favourites: sjå favorittane dine
       read:filters: sjå filtera dine
-      read:follows: sjå kven du fylgjer
+      read:follows: sjå fylgjarane dine
       read:lists: sjå listene dine
       read:mutes: sjå kven du har målbunde
       read:notifications: sjå varsla dine
